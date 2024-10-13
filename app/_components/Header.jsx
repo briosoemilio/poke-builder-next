@@ -1,7 +1,19 @@
+import Image from 'next/image'
 import React from 'react'
 
 export const Header = () => {
   return (
-    <div>Header</div>
+    <div className='bg-black p-5 px-20 flex flex-1 flex-row items-center justify-between'>
+      <Image src={'/pokebuilder_logo.png'}
+        width={100}
+        height={100}
+        style={{ width: 200 }}
+      />
+      <div>
+        <a href="" className='text-white mr-5'>Home</a>
+        <a href="" className='text-white mr-5'>Pokemon</a>
+        <a href="" className='text-white'>Team</a>
+      </div>
+    </div>
   )
 }

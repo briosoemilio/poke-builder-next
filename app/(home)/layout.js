@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={'w-full max-w-[1440px] mx-auto'}
+        className={'w-full max-w-[1440px] mx-auto '}
       >
         <Header />
         {children}
