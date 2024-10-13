@@ -20,6 +20,17 @@ const PokemonList = () => {
 
   return (
     <>
+      <div className='flex justify-center mb-10'>
+        <label className="input input-bordered flex items-center gap-2">
+          <input type="text" className="grow" placeholder={'Enter Pokemon Name'} onChange={(e) => setName(e.target.value)} />
+        </label>
+        <Button name={"SEARCH"}
+          onClick={nextPage}
+          disabled={loading}
+          loading={loading}
+          className={'ml-5'}
+        />
+      </div>
       <div>
         <table className='mx-auto' style={{ borderCollapse: 'collapse', }}>
           <thead>
