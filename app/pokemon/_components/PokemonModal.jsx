@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import TypesIcon from '../../_components/TypesIcon'
 import AbilityIcon from '../../_components/AbilityIcon'
+import Stats from '../../_components/Stats'
 
 const PokemonModal = ({ pokemonInfo, loading }) => {
   console.log({ pokemonInfo })
@@ -38,11 +39,16 @@ const PokemonModal = ({ pokemonInfo, loading }) => {
             ))}
           </div>
 
-          <div className='flex justify-center mb-10'>
+          <div className='flex justify-center items-center mb-10'>
             <span className="font-bold">Abilities:</span>
             {pokemonInfo?.abilities.map((ability, index) => (
               <AbilityIcon key={index} ability={ability?.ability} />
             ))}
+          </div>
+
+          <div className='flex flex-col justify-center items-center mb-10'>
+            <span className="font-bold">Stats:</span>
+            <Stats stats={pokemonInfo?.stats} />
           </div>
 
           <div className="modal-action flex justify-center">
