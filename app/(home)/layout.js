@@ -22,10 +22,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={'w-full max-w-[1440px] mx-auto '}
+        className={'w-full max-w-[1440px] mx-auto flex flex-col min-h-screen'}
       >
         <Header />
-        {children}
+        <div className="flex-grow">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

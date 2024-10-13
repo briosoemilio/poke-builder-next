@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <div className='bg-black p-5 px-20 flex flex-1 flex-row items-center justify-between'>
+    <div className='p-5 px-20 flex flex-row items-center justify-between '>
       <Image src={'/pokebuilder_logo.png'}
         width={100}
         height={100}
