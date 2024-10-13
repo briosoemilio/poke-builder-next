@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export const Header = () => {
@@ -10,9 +11,9 @@ export const Header = () => {
         style={{ width: 200 }}
       />
       <div>
-        <a href="" className='text-white mr-5'>Home</a>
-        <a href="" className='text-white mr-5'>Pokemon</a>
-        <a href="" className='text-white'>Team</a>
+        <Link href="/" className="text-white mr-5">Home</Link>
+        <Link href="pokemon" className="text-white mr-5">Pokemon</Link>
+        <Link href="team" className="text-white mr-5">My Team</Link>
       </div>
     </div>
   )
