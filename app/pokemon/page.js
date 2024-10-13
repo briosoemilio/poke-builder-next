@@ -1,5 +1,3 @@
-// app/pokemon/page.js
-
 import PokemonList from "./_components/PokemonList";
 
 const PokemonPage = () => {

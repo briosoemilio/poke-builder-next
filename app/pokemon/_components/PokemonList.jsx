@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import useFetchPokemons from '../useFetchPokemons'
 import useFetchPokemonInfo from '../useFetchPokemonInfo'
 import { capitalize } from 'lodash'
@@ -7,8 +7,17 @@ import { Button } from '../../_components'
 import PokemonModal from './PokemonModal'
 
 const PokemonList = () => {
+  // Hookes
   const { pokemons, page, nextPage, prevPage, loading } = useFetchPokemons()
   const { pokemonInfo, openModal, fetchPokemonInfo, loading: infoLoading } = useFetchPokemonInfo()
+
+  // React Hooks
+  const [modalContent, setModalContent] = useState('info')
+
+  // Functions
+  const openInfo = () => setModalContent('info')
+  const openAdd = () => setModalContent('add')
+
   return (
     <>
       <div>
@@ -56,7 +65,13 @@ const PokemonList = () => {
           />
         </div>
       </div>
-      <PokemonModal pokemonInfo={pokemonInfo} loading={infoLoading} />
+      <PokemonModal
+        modalContent={modalContent}
+        openAdd={openAdd}
+        openInfo={openInfo}
+        pokemonInfo={pokemonInfo}
+        loading={infoLoading}
+      />
     </>
   )
 }
