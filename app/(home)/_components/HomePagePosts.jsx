@@ -1,20 +1,19 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import useFetchPosts from '../useFetchPosts'
+
+import HomePageCard from './HomePageCard'
+import { Button } from '../../_components'
+import { useRouter } from 'next/navigation'
 
 export const HomePagePosts = () => {
   const { posts } = useFetchPosts()
+  const router = useRouter()
 
   return (
     <div>
-      {posts.map((post) => (
-        <div key={post.id} className="mb-4">
-          <h2 className="text-xl font-semibold">{post.title.rendered.slice(4)}</h2>
-          <div
-            className="mt-2"
-            dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-          />
-        </div>
+      {posts.map((post, index) => (
+        <HomePageCard post={post} index={index} />
       ))}
     </div>
   )
