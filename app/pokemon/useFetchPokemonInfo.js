@@ -17,6 +17,7 @@ const useFetchPokemonInfo = () => {
       const data = await response.json();
       setPokemonInfo(data)
     } catch (error) {
+      setPokemonInfo(null)
       console.log('error occurred', { error })
     } finally {
       setLoading(false)

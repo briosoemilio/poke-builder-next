@@ -13,19 +13,24 @@ const PokemonList = () => {
 
   // React Hooks
   const [modalContent, setModalContent] = useState('info')
+  const [pokeName, setPokeName] = useState('')
 
   // Functions
   const openInfo = () => setModalContent('info')
   const openAdd = () => setModalContent('add')
+  const submitSearch = () => {
+    openModal()
+    fetchPokemonInfo(pokeName)
+  }
 
   return (
     <>
       <div className='flex justify-center mb-10'>
         <label className="input input-bordered flex items-center gap-2">
-          <input type="text" className="grow" placeholder={'Enter Pokemon Name'} onChange={(e) => setName(e.target.value)} />
+          <input type="text" className="grow" placeholder={'Enter Pokemon Name'} onChange={(e) => setPokeName(e.target.value)} />
         </label>
         <Button name={"SEARCH"}
-          onClick={nextPage}
+          onClick={submitSearch}
           disabled={loading}
           loading={loading}
           className={'ml-5'}

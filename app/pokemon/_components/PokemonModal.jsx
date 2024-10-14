@@ -4,14 +4,22 @@ import React, { useEffect, useState } from 'react'
 
 import PokemonInfo from './PokemonInfo'
 import PokemonAdd from './PokemonAdd'
+import PokemonMissing from './PokemonMissing'
 
 const PokemonModal = ({ modalContent, openInfo, openAdd, pokemonInfo, loading }) => {
 
   return (
     <dialog id="pokemon_modal" className="modal">
-      {modalContent === 'info' ?
-        <PokemonInfo nextPage={() => openAdd()} pokemonInfo={pokemonInfo} loading={loading} /> :
-        <PokemonAdd prevPage={() => openInfo()} pokemonInfo={pokemonInfo} />
+      {
+        loading ? (
+          <span className='loading loading-spinner' />
+        ) : !pokemonInfo ? (
+          <PokemonMissing pokemonInfo={pokemonInfo} />
+        ) : modalContent === 'info' ? (
+          <PokemonInfo nextPage={() => openAdd()} pokemonInfo={pokemonInfo} />
+        ) : (
+          <PokemonAdd prevPage={() => openInfo()} pokemonInfo={pokemonInfo} />
+        )
       }
     </dialog>
   )
