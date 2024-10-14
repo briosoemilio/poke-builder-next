@@ -1,6 +1,7 @@
 ## Pokemon Team Builder App
 
 Powered by Next JS and Wordpress CMS.
+
 https://github.com/user-attachments/assets/19bd551f-2685-4858-ac47-a9fc871bcd25
 
 ## Choose from literally thousands of pokemons
