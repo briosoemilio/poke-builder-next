@@ -30,7 +30,7 @@ const StatsSetter = ({ stats, setStats }) => {
   }, [])
 
   return (
-    <div className='mb-10'>
+    <div className='mb-1'>
       {stats.map((parsedStat, index) => {
         const { stat, value } = parsedStat
 

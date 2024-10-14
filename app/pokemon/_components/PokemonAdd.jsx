@@ -1,23 +1,34 @@
 import React, { useMemo, useState } from 'react'
 import Image from 'next/image'
-import TypesIcon from '../../_components/TypesIcon'
 import AbilityIcon from '../../_components/AbilityIcon'
-import Stats from '../../_components/Stats'
 import StatsSetter from '../../_components/StatsSetter'
-import useFetchAbilityInfo from '../useFetchAbilityInfo'
+import useAddPokemonTeam from '../useAddPokemonTeam'
+import { Button } from '../../_components'
+import useFetchTeam from '../../team/useFetchTeam'
 
-const PokemonAdd = ({ pokemonInfo, prevPage }) => {
+const PokemonAdd = ({ pokemonInfo, prevPage, nextPage }) => {
   const [name, setName] = useState('')
-  const [selectedAbility, setAbility] = useState(null)
+  const [selectedAbility, setAbility] = useState(pokemonInfo?.abilities[0]?.ability?.name)
   const initialStatValues = pokemonInfo?.stats.map((stat) => ({
     stat: stat?.stat?.name,
     value: stat?.['base_stat'],
     baseStat: stat?.['base_stat'] // Store baseStat for calculations
   }))
   const [stats, setStats] = useState(initialStatValues)
+  const [errorMessage, setError] = useState('')
+  const { addPokemon, loading } = useAddPokemonTeam()
+  const { team } = useFetchTeam()
 
-  const request = {
-    name: name || pokemonInfo?.name, selectedAbility, stats
+  const onPressConfirm = async () => {
+    if (team?.length >= 6) return setError('Team is already full')
+    const requestData = {
+      name: pokemonInfo?.name,
+      nickname: name,
+      ability: selectedAbility,
+      stats: JSON.stringify(stats)
+    }
+    const res = await addPokemon(requestData)
+    if (res?.message === "Pokémon team added successfully") { nextPage() }
   }
 
   return (
@@ -74,8 +85,9 @@ const PokemonAdd = ({ pokemonInfo, prevPage }) => {
 
       </div>
 
-      <div className="modal-action flex justify-center">
-        <button className="btn" onClick={() => console.log(request)}>Confirm</button>
+      <div className="modal-action flex flex-col items-center">
+        <Button name={"Confirm"} onClick={onPressConfirm} loading={loading} />
+        {errorMessage && <span className='mt-1 text-primaryRed'>{errorMessage}</span>}
       </div>
     </div>
   )

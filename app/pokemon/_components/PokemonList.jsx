@@ -18,6 +18,7 @@ const PokemonList = () => {
   // Functions
   const openInfo = () => setModalContent('info')
   const openAdd = () => setModalContent('add')
+  const openSuccess = () => setModalContent('success')
   const submitSearch = () => {
     openModal()
     fetchPokemonInfo(pokeName)
@@ -54,6 +55,7 @@ const PokemonList = () => {
                 </td>
                 <td style={{ border: '1px solid #ddd', padding: '8px' }}>
                   <div className="cursor-pointer underline" onClick={async () => {
+                    setModalContent('info')
                     openModal()
                     fetchPokemonInfo(pokemon.name)
                   }
@@ -85,6 +87,7 @@ const PokemonList = () => {
         modalContent={modalContent}
         openAdd={openAdd}
         openInfo={openInfo}
+        openSuccess={openSuccess}
         pokemonInfo={pokemonInfo}
         loading={infoLoading}
       />

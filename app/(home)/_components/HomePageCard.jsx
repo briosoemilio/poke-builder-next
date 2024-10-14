@@ -38,7 +38,7 @@ const HomePageCard = ({ post, index }) => {
     <div
       key={post.id}
       ref={cardRef}
-      className="mb-4 p-4 h-[60vh] flex flex-col lg:flex-row justify-center items-center">
+      className="mb-4 p-4 h-[80vh] flex flex-col lg:flex-row justify-center items-center">
       <div className='lg:w-[45vw]'>
         <h2 className="text-3xl lg:text-6xl font-semibold">{post.title.rendered.slice(4)}</h2>
         <div
